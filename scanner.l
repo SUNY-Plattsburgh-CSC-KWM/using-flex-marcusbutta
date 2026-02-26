@@ -8,7 +8,8 @@
 "[0-9]|[a-z]" {printf("<id>: %s", yytext);}
 ([0-9]|[a-z])[ \t]"+"[ \t]([0-9]|[a-z]) {printf("<expression> %s", yytext);}
 ([0-9]|[a-z])[ \t]"*"[ \t]([0-9]|[a-z]) {printf("<term> %s", yytext);}
-(\(([0-9]|[a-z])[ \t]("+"|"*")[ \t]([0-9]|[a-z])\))|\([0-9]\) {printf("<factor> %s", yytext);}
+(\(*([0-9]|[a-z])[ \t]("+"|"*")[ \t]([0-9]|[a-z])\))|\([0-9]\)* {printf("<expression> %s", yytext);}
+[a-z]+[ \t]"="[ \t](\(*([0-9]|[a-z])[ \t]("+"|"*")[ \t]([0-9]|[a-z])\))|\([0-9]\)* {printf("<statement> %s", yytext);}
 %%
 
 int main(){
