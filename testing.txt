@@ -1,0 +1,9 @@
+(base) [marcus@marcusdesktop using-flex-marcusbutta]$ flex scanner.l && clang lex.yy.c && echo "(4)" | ./a.out
+<expression> (4)
+(base) [marcus@marcusdesktop using-flex-marcusbutta]$ flex scanner.l && clang lex.yy.c && echo "a = (x + y) * (2 * z)" | ./a.out
+<statement> a = (x + y) * <expression> (2 * z)
+(base) [marcus@marcusdesktop using-flex-marcusbutta]$ flex scanner.l && clang lex.yy.c && echo "b = (3*x*x) + (7*x) + 15" | ./a.out
+b = <expression> (3*x*x) + <expression> (7*x) + 15
+(base) [marcus@marcusdesktop using-flex-marcusbutta]$ flex scanner.l && clang lex.yy.c && echo "c = (z + z + z + z)*7" | ./a.out
+c = (<expression> z + z + <expression> z + z)*7
+(base) [marcus@marcusdesktop using-flex-marcusbutta]$
